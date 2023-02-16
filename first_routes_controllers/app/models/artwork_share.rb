@@ -4,14 +4,14 @@ class ArtworkShare < ApplicationRecord
     message: "User has already seen this"}
 
         belongs_to :artwork,
-        primary_key: :id,
-        foreign_key: :artwork_id,
-        class_name: :Artwork
+            primary_key: :id,
+            foreign_key: :artwork_id,
+            class_name: :Artwork
 
         belongs_to :viewer,
-        primary_key: :id,
-        foreign_key: :viewer_id,
-        class_name: :User
+            primary_key: :id,
+            foreign_key: :viewer_id,
+            class_name: :User
 
     
 end

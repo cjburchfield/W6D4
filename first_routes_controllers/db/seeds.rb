@@ -6,15 +6,61 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-users = User.create!([{username: "Dan"},{username: "Jamie"},{ username: "Utamaro" }, { username: "Watanabe Kazan" }, { username: "Kano Eitoku" }])
+Artwork.destroy_all
+User.destroy_all
+ArtworkShare.destroy_all
+#create users individually, more dynamic to do dan.id
 
-artworks = Artwork.create!([ { artist_id: 3, title: "Coquettish type", img_url: "https://artsandculture.google.com/asset/ten-physiognomic-types-of-women-coquettish-type-kitagawa-utamaro/-QE0ONJjDJlDIA" },
- { artist_id: 3, title: "Print", img_url: "https://artsandculture.google.com/asset/print-kitagawa-utamaro/GQEDMyzO20XXxg"}, 
-{artist_id: 4, title: "Portrait", img_url: "https://artsandculture.google.com/asset/portrait-of-sato-issai-age-50-watanabe-kazan/GAGl82jC0YNkgQ"},
- { artist_id: 5, title: "Cypress Trees", img_url: "https://artsandculture.google.com/asset/cypress-trees-kano-eitoku/WgG8VxnsSPYalQ"}])
+#Seeding Users#
+dan = User.create!(
+    username: "cooldan"
+)
 
+jamie = User.create!(
+    username: "Jamie"
+)
 
- artwork_shares = ArtworkShare.create! ([ { artwork_id: 1, viewer_id: 1 }, { artwork_id: 1, viewer_id: 2 }, { artwork_id: 2, viewer_id: 1 },
-{ artwork_id: 3 , viewer_id: 2 }, { artwork_id: 4 , viewer_id: 1 }, 
-{ artwork_id: 4 , viewer_id: 2 }, { artwork_id: 5 , viewer_id: 2 }])
+utamaro = User.create!(
+    username: "Utamaro"
+)
+
+watanabe_kazan = User.create!(
+    username: "Watanabe Kazan"
+)
+
+kano_eitoku = User.create!(
+    username: "Kano Eitoku"
+)
+
+#Seeding Artworks#
+
+coquettish = Artwork.create!(
+    artist_id: utamaro.id,
+    title: "Coquettish",
+    img_url: "https://artsandculture.google.com/asset/ten-physiognomic-types-of-women-coquettish-type-kitagawa-utamaro/-QE0ONJjDJlDIA"
+)
+
+woodcut = Artwork.create!(
+    artist_id: utamaro.id,
+    title: "Woodcut",
+    img_url: "https://artsandculture.google.com/asset/print-kitagawa-utamaro/GQEDMyzO20XXxg"
+)
+
+portrait = Artwork.create!(
+    artist_id: watanabe_kazan.id,
+    title: "Portrait",
+    img_url: "https://artsandculture.google.com/asset/portrait-of-sato-issai-age-50-watanabe-kazan/GAGl82jC0YNkgQ"
+)
+
+ cypress_tree = Artwork.create!(
+    artist_id: utamaro.id,
+    title: "Cypress Tree",
+    img_url: "https://artsandculture.google.com/asset/cypress-trees-kano-eitoku/WgG8VxnsSPYalQ"
+)
+
+#Seeding ArtworkShares#
+
+ artwork_shares = ArtworkShare.create! ([ { artwork_id: coquettish.id, viewer_id: dan.id }, { artwork_id: coquettish.id, viewer_id: jamie.id }, { artwork_id: woodcut.id, viewer_id: dan.id },
+{ artwork_id: portrait.id , viewer_id: jamie.id }, { artwork_id: portrait.id , viewer_id: dan.id }, 
+{ artwork_id: cypress_tree.id , viewer_id: dan.id }, { artwork_id: cypress_tree.id , viewer_id: jamie.id }])
 
