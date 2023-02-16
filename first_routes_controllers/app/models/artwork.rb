@@ -15,11 +15,15 @@ class Artwork < ApplicationRecord
     validates :title, presence: true, uniqueness: { scope: :artist_id,
     message: "this title can only be used once per artist" }
 
-    
+    def self.artworks_for_user_id(user_id)
+        user = User.find(user_id) #this is the user
+        return [user.artworks, user.shared_artworks].flatten
+    end
 
     
     belongs_to :artist,
         primary_key: :id,
+        foreign_key: :artist_id,
         class_name: :User
 
     has_many :shares,
