@@ -21,11 +21,12 @@ class User < ApplicationRecord
     has_many :views,
     primary_key: :id,
     foreign_key: :viewer_id,
-    class_name: :ArtworkShares
+    class_name: :ArtworkShares,
+    dependent: :destroy
 
     #this is the artworks that have been shared with this user
-    has_many :shared_artworks
-    through :views,
+    has_many :shared_artworks,
+    through: :views,
     source: :artwork
 
 end
