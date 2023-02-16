@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        if @user.update({username: params[:user[:username]]})
+        if @user.update(strong_params)
             redirect_to user_url(@user.id)
         else
             render json: @user.errors.full_messages, status: 403

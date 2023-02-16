@@ -20,14 +20,14 @@ class Artwork < ApplicationRecord
         class_name: :User
 
     has_many :shares,
-    primary_key: :id,
-    foreign_key: :artwork_id,
-    class_name: :ArtworkShares,
-    dependent: :destroy
+        primary_key: :id,
+        foreign_key: :artwork_id,
+        class_name: :ArtworkShares,
+        dependent: :destroy
 
     has_many :shared_viewers,
-    through: :shares,
-    source: :viewer
+        through: :shares,
+        source: :viewer
 
 
 end
