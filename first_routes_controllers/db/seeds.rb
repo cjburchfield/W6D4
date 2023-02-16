@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-users = User.create!([{ username: "Utamaro" }, { username: "Watanabe Kazan" }, { username: "Kano Eitoku" }])
+users = User.create!([{username: "Dan"},{username: "Jamie"},{ username: "Utamaro" }, { username: "Watanabe Kazan" }, { username: "Kano Eitoku" }])
 
 artworks = Artwork.create!([ { artist_id: 3, title: "Coquettish type", img_url: "https://artsandculture.google.com/asset/ten-physiognomic-types-of-women-coquettish-type-kitagawa-utamaro/-QE0ONJjDJlDIA" },
  { artist_id: 3, title: "Print", img_url: "https://artsandculture.google.com/asset/print-kitagawa-utamaro/GQEDMyzO20XXxg"}, 

@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_184107) do
   end
 
   create_table "artworks", force: :cascade do |t|
-    t.bigint "artist_id", null: false
+    t.bigint "artist_id", null: false 
     t.string "title", null: false
     t.string "img_url", null: false
     t.datetime "created_at", null: false

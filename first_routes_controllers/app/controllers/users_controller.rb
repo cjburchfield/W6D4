@@ -7,9 +7,9 @@ class UsersController < ApplicationController
     def create
         @user = User.new(strong_params)
         if @user.save
-            render json: @user
+            render json: @user, status: 201
         else
-            render json: @user.errors.full_messages, status: 426
+            render json: @user.errors.full_messages, status: 422
         end
     end
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        if @user.update(strong_params)
+        if @user.update({username: params[:user[:username]]})
             redirect_to user_url(@user.id)
         else
             render json: @user.errors.full_messages, status: 403
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
     private
 
-    def strong_params
-        params.require(:user).permit(:name, :email)
+    def strong_params 
+        params.require(:user).permit(:username)
     end
 end
